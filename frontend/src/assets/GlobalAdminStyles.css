@@ -1,0 +1,60 @@
+.admin-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+  .admin-section h2 {
+    color: #0073b1;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .admin-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .admin-section .form-group {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
+  }
+  .admin-section .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  .admin-section .form-group input,
+  .admin-section .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .admin-section button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0073b1;
+    color: #fff;
+    cursor: pointer;
+  }
+  .admin-section button:hover {
+    background-color: #005f8d;
+  }
+  .admin-nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  .admin-nav li {
+    margin-bottom: 10px;
+  }
+  .admin-nav a {
+    text-decoration: none;
+    color: #0073b1;
+  }
+  .admin-nav a:hover {
+    text-decoration: underline;
+  }
+  

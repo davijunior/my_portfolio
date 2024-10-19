@@ -4,9 +4,11 @@ import ProfessionalInfo from './components/ProfessionalInfo.vue';
 import AboutMe from './components/AboutMe.vue';
 import UserFeed from './components/UserFeed.vue';
 import UserContact from './components/UserContact.vue';
-import AdminDashboard from './components/AdminDashboard.vue'; // Adicionado
-import AdminProfessionalInfo from './components/AdminProfessionalInfo.vue'; // Adicionado
-import AdminPersonalInfo from './components/AdminPersonalInfo.vue'; // Adicionado
+import AdminDashboard from './components/AdminDashboard.vue'; 
+import AdminProfessionalInfo from './components/AdminProfessionalInfo.vue'; 
+import AdminPersonalInfo from './components/AdminPersonalInfo.vue'; 
+import LoginUser from './components/LoginUser.vue'; 
+import EditUser from './components/EditUser.vue'; 
 
 Vue.use(Router);
 
@@ -14,6 +16,8 @@ export default new Router({
   mode: 'history',
   routes: [
     { path: '/', redirect: '/professional-info' },
+    { path: '/login', component: LoginUser },
+    { path: '/edit-user', component: EditUser },
     { path: '/professional-info', component: ProfessionalInfo },
     { path: '/about-me', component: AboutMe },
     { path: '/feed', component: UserFeed },

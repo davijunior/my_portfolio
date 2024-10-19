@@ -20,18 +20,32 @@
 
 <script>
 import { gsap } from "gsap";
+import { EventBus } from '@/eventBus';
 
 export default {
   data() {
+    const user = JSON.parse(localStorage.getItem('user'))
     return {
-      name: 'Seu Nome',
-      avatar: 'link-to-avatar',
-      openToWork: true
+      name: user.name,
+      avatar: "http://localhost:3000"+user.avatar.url,
+      openToWork: user.open_to_work
     };
   },
   mounted() {
     gsap.from(".header-content", { duration: 1, y: -100, opacity: 0 });
+  },
+  created() {
+    EventBus.$on('user-updated', this.handleUserUpdated);
+  },
+  methods: {
+    handleUserUpdated(updatedUser) {
+      this.name = updatedUser.name;
+      this.avatar = "http://localhost:3000" + updatedUser.avatar.url;
+      this.openToWork = updatedUser.open_to_work;
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    }
   }
+  
 };
 </script>
 

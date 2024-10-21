@@ -20,6 +20,7 @@
   
   export default {
     data() {
+      this.user = JSON.parse(localStorage.getItem('user'));
       return {
         bio: '',
         hobbies: ''
@@ -29,7 +30,8 @@
       submitForm() {
         axios.post('/personal_infos', {
           bio: this.bio,
-          hobbies: this.hobbies
+          hobbies: this.hobbies,
+          user_id: this.user.id
         })
         .then(() => {
           alert('Informações salvas!');

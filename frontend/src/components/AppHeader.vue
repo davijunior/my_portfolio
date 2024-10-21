@@ -4,7 +4,7 @@
       <img :src="avatar" alt="Avatar" class="avatar">
       <div class="header-info">
         <h1>{{ name }}</h1>
-        <p v-if="openToWork" class="status">Open to Work</p>
+        <p v-if="open_to_work" class="status">Open to Work</p>
       </div>
       <nav class="header-nav">
         <ul>
@@ -21,21 +21,33 @@
 <script>
 import { gsap } from "gsap";
 import { EventBus } from '@/eventBus';
+import axios from '@/axios'; 
 
 export default {
   data() {
-    const user = JSON.parse(localStorage.getItem('user'))
     return {
-      name: user.name,
-      avatar: "http://localhost:3000"+user.avatar.url,
-      openToWork: user.open_to_work
+      name: "",
+      avatar: "",
+      openToWork: false
     };
+  },
+  created() {
+    axios.get('/users/1')
+      .then(response => {
+        this.user_info = response.data;
+        console.log(this.user_info); // Certifique-se de que o ID do usuário está definido em algum lugar
+        this.name = this.user_info.name;
+        this.email = this.user_info.email;
+        this.avatar = "http://localhost:3000/"+this.user_info.avatar.url;
+        this.open_to_work = this.user_info.open_to_work
+      })
+      .catch(error => {
+        console.error('Erro ao buscar informações profissionais:', error);
+      });
+      EventBus.$on('user-updated', this.handleUserUpdated);
   },
   mounted() {
     gsap.from(".header-content", { duration: 1, y: -100, opacity: 0 });
-  },
-  created() {
-    EventBus.$on('user-updated', this.handleUserUpdated);
   },
   methods: {
     handleUserUpdated(updatedUser) {

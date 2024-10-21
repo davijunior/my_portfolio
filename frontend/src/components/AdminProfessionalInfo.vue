@@ -24,6 +24,7 @@
   
   export default {
     data() {
+      this.user = JSON.parse(localStorage.getItem('user'));
       return {
         title: '',
         company: '',
@@ -35,7 +36,8 @@
         axios.post('/professional_infos', {
           title: this.title,
           company: this.company,
-          years_experience: this.yearsExperience
+          years_experience: this.yearsExperience,
+          user_id: this.user.id
         })
         .then(() => {
           alert('Informações salvas!');

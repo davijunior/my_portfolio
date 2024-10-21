@@ -8,7 +8,8 @@ import AdminDashboard from './components/AdminDashboard.vue';
 import AdminProfessionalInfo from './components/AdminProfessionalInfo.vue'; 
 import AdminPersonalInfo from './components/AdminPersonalInfo.vue'; 
 import LoginUser from './components/LoginUser.vue'; 
-import EditUser from './components/EditUser.vue'; 
+import EditUser from './components/EditUser.vue';
+import { isAuthenticated } from '@/auth';
 
 Vue.use(Router);
 
@@ -22,8 +23,30 @@ export default new Router({
     { path: '/about-me', component: AboutMe },
     { path: '/feed', component: UserFeed },
     { path: '/contact', component: UserContact },
-    { path: '/admin', component: AdminDashboard }, // Adicionado
-    { path: '/admin/professional-info', component: AdminProfessionalInfo }, // Adicionado
-    { path: '/admin/personal-info', component: AdminPersonalInfo } // Adicionado
+    { path: '/admin', component: AdminDashboard,
+      beforeEnter: (to, from, next) => {
+      if (isAuthenticated()) {
+        next();
+      } else {
+        next('/');
+      }
+    } }, 
+    { path: '/admin/professional-info', component: AdminProfessionalInfo,
+      beforeEnter: (to, from, next) => {
+      if (isAuthenticated()) {
+        next();
+      } else {
+        next('/');
+      }
+    } },
+    { path: '/admin/personal-info', component: AdminPersonalInfo,
+      beforeEnter: (to, from, next) => {
+        if (isAuthenticated()) {
+          next();
+        } else {
+          next('/');
+        }
+      }
+    }
   ]
 });

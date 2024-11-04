@@ -1,5 +1,7 @@
 <h1>MyPortfolio</h1>
-<code> MyPortfolio é um projeto de portfólio desenvolvido com Ruby on Rails no backend e Vue.js no frontend. O objetivo é criar um portfólio profissional que apresente suas informações pessoais e profissionais, com um painel de administração para gerenciar seus dados.</code>
+<code>
+  MyPortfolio é um projeto de portfólio desenvolvido com Ruby on Rails no backend e Vue.js no frontend. O objetivo é criar um portfólio profissional que apresente suas informações pessoais e profissionais, com um painel de administração para gerenciar seus dados.
+</code>
 
 Tecnologias Utilizadas
 Backend: Ruby on Rails
